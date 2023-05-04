@@ -90,26 +90,67 @@
           <div class="col-6 col-md-6">
             <p class="mb-0">
               <a href="#" class="mr-3"><span class="text-black fl-bigmug-line-phone351"></span> <span
-                  class="d-none d-md-inline-block ml-2">+2 102 3923 3922</span></a>
+                  class="d-none d-md-inline-block ml-2">
+                  <?$APPLICATION->IncludeComponent(
+                  "bitrix:main.include",
+                  "",
+                  Array(
+                    "AREA_FILE_SHOW" => "file",
+                    "AREA_FILE_SUFFIX" => "inc",
+                    "EDIT_TEMPLATE" => "",
+                    "PATH" => "/include/phone_number.php"
+                  )
+                );?>
+                <br></span>
+              </a>
               <a href="#"><span class="text-black fl-bigmug-line-email64"></span> <span
-                  class="d-none d-md-inline-block ml-2">info@domain.com</span></a>
+                  class="d-none d-md-inline-block ml-2">
+                  <?$APPLICATION->IncludeComponent(
+                  "bitrix:main.include",
+                  "",
+                  Array(
+                    "AREA_FILE_SHOW" => "file",
+                    "AREA_FILE_SUFFIX" => "inc",
+                    "EDIT_TEMPLATE" => "",
+                    "PATH" => "/include/email.php"
+                  )
+                );?>
+                </span></a>
             </p>
           </div>
           <div class="col-6 col-md-6 text-right">
-            <a href="#" class="mr-3"><span class="text-black icon-facebook"></span></a>
-            <a href="#" class="mr-3"><span class="text-black icon-twitter"></span></a>
-            <a href="#" class="mr-0"><span class="text-black icon-linkedin"></span></a>
+            <?$APPLICATION->IncludeComponent(
+            "bitrix:main.include",
+            "",
+            Array(
+              "AREA_FILE_SHOW" => "file",
+              "AREA_FILE_SUFFIX" => "inc",
+              "EDIT_TEMPLATE" => "",
+              "PATH" => "/include/icons.php"
+            )
+            );?>
           </div>
         </div>
       </div>
-
     </div>
+
+
     <div class="site-navbar">
       <div class="container py-1">
         <div class="row align-items-center">
           <div class="col-8 col-md-8 col-lg-4">
-            <h1 class=""><a href="index.html" class="h5 text-uppercase text-black"><strong>HomeSpace<span
-                    class="text-danger">.</span></strong></a></h1>
+            <h1 class="">
+            <?$APPLICATION->IncludeComponent(
+            "bitrix:main.include",
+            "",
+            Array(
+              "AREA_FILE_SHOW" => "file",
+              "AREA_FILE_SUFFIX" => "inc",
+              "EDIT_TEMPLATE" => "",
+              "PATH" => "/include/logo.php"
+            )
+            );?>
+            </h1>
           </div>
           <div class="col-4 col-md-4 col-lg-8">
             <nav class="site-navigation text-right text-md-right" role="navigation">
@@ -143,10 +184,20 @@
               </ul>
             </nav>
           </div>
-
-
         </div>
       </div>
     </div>
+    <?$APPLICATION->IncludeComponent("bitrix:menu",".default",Array(
+        "ROOT_MENU_TYPE" => "top", 
+        "MAX_LEVEL" => "1", 
+        "CHILD_MENU_TYPE" => "top", 
+        "USE_EXT" => "Y",
+        "DELAY" => "N",
+        "ALLOW_MULTI_SELECT" => "Y",
+        "MENU_CACHE_TYPE" => "N", 
+        "MENU_CACHE_TIME" => "3600", 
+        "MENU_CACHE_USE_GROUPS" => "Y", 
+        "MENU_CACHE_GET_VARS" => "" 
+    )
+);?>
   </div>
- 
