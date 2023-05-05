@@ -1,38 +1,29 @@
 <? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Главная страница");
-?><div class="slide-one-item home-slider owl-carousel">
-	<div class="site-blocks-cover" title="Код PHP: &lt;?=SITE_TEMPLATE_PATH?&gt;">
- <img src="https://hv01-aleksandrboyarchuk.study.mcart.ru/bitrix/images/1.gif" title="Код PHP: &lt;?= SITE_TEMPLATE_PATH ?&gt;" id="bxid383611050">Код PHPКод PHP/images/hero_bg_1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5"&gt;<br>
-		<div class="text">
-			<h2>853 S Lucerne Blvd</h2>
-			<p class="location">
- <span class="property-icon icon-room"></span> Los Angeles, CA 90005
-			</p>
-			<p class="mb-2">
- <strong>$2,250,500</strong>
-			</p>
-			<p class="mb-0">
- <a href="#" class="text-uppercase small letter-spacing-1 font-weight-bold">More Details</a>
-			</p>
-		</div>
-	</div>
-	<div class="site-blocks-cover" title="Код PHP: &lt;?=SITE_TEMPLATE_PATH?&gt;">
-		 <?= SITE_TEMPLATE_PATH ?><span class="bxhtmled-surrogate-inner"><span class="bxhtmled-right-side-item-icon"></span><span class="bxhtmled-comp-lable" unselectable="on" spellcheck="false">Код PHP</span></span>/images/hero_bg_3.jpg);" data-aos="fade" data-stellar-background-ratio="0.5"&gt;
-		<div class="text">
-			<h2>625 S. Berendo St</h2>
-			<p class="location">
- <span class="property-icon icon-room"></span>607 Los Angeles, CA 90005
-			</p>
-			<p class="mb-2">
- <strong>$2,250,500</strong>
-			</p>
-			<p class="mb-0">
- <a href="#" class="text-uppercase small letter-spacing-1 font-weight-bold">More Details</a>
-			</p>
-		</div>
-	</div>
-</div>
- <?$APPLICATION->IncludeComponent(
+?><?$APPLICATION->IncludeComponent(
+	"bitrix:news.line",
+	"slider",
+	Array(
+		"ACTIVE_DATE_FORMAT" => "d.m.Y",
+		"CACHE_GROUPS" => "Y",
+		"CACHE_TIME" => "300",
+		"CACHE_TYPE" => "A",
+		"DETAIL_URL" => "",
+		"FIELD_CODE" => array("PREVIEW_PICTURE",""),
+		"IBLOCKS" => array("12"),
+		"IBLOCK_TYPE" => "Content",
+		"NEWS_COUNT" => "20",
+		"SORT_BY1" => "ACTIVE_FROM",
+		"SORT_BY2" => "SORT",
+		"SORT_ORDER1" => "DESC",
+		"SORT_ORDER2" => "ASC"
+	)
+);?> <?
+    GLOBAL $arrFilter;
+    $arrFilter = array(
+		"PROPERTY_PRIORITY_VALUE" => "Да"
+    );
+?> <?$APPLICATION->IncludeComponent(
 	"bitrix:news.list",
 	"",
 	Array(
@@ -56,7 +47,7 @@ $APPLICATION->SetTitle("Главная страница");
 		"DISPLAY_PREVIEW_TEXT" => "Y",
 		"DISPLAY_TOP_PAGER" => "N",
 		"FIELD_CODE" => array("",""),
-		"FILTER_NAME" => "",
+		"FILTER_NAME" => "arrFilter",
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
 		"IBLOCK_ID" => "10",
 		"IBLOCK_TYPE" => "Ads",
