@@ -1,6 +1,7 @@
 <? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Главная страница");
-?><?$APPLICATION->IncludeComponent(
+?>
+<?$APPLICATION->IncludeComponent(
 	"bitrix:news.line",
 	"slider",
 	Array(
@@ -119,7 +120,7 @@ $APPLICATION->SetTitle("Главная страница");
 		<div class="row mb-5">
 			<div class="col-12">
 				<div class="site-section-title">
-					<h2>New Properties for You</h2>
+					<h2><?=GetMessage("NEW_PROPER")?></h2>
 				</div>
 			</div>
 		</div>

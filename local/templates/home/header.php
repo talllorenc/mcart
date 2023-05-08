@@ -1,8 +1,13 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
+<?
+IncludeTemplateLangFile(__FILE__);
+?>
+
 <!DOCTYPE html>
 <html lang="<?=LANGUAGE_ID;?>-<?=ToUpper(LANGUAGE_ID);?>">
 
 <head>
+  
   <?
     $APPLICATION->ShowHead()
   ?>
@@ -134,7 +139,6 @@
       </div>
     </div>
 
-
     <div class="site-navbar">
       <div class="container py-1">
         <div class="row align-items-center">
@@ -187,17 +191,36 @@
         </div>
       </div>
     </div>
-    <?$APPLICATION->IncludeComponent("bitrix:menu",".default",Array(
-        "ROOT_MENU_TYPE" => "top", 
-        "MAX_LEVEL" => "1", 
-        "CHILD_MENU_TYPE" => "top", 
-        "USE_EXT" => "Y",
-        "DELAY" => "N",
-        "ALLOW_MULTI_SELECT" => "Y",
-        "MENU_CACHE_TYPE" => "A", 
-        "MENU_CACHE_TIME" => "3600", 
-        "MENU_CACHE_USE_GROUPS" => "Y", 
-        "MENU_CACHE_GET_VARS" => "" 
-    )
+    <?$APPLICATION->IncludeComponent(
+	"bitrix:menu", 
+	"horizontal_multilevel", 
+	array(
+		"ROOT_MENU_TYPE" => "top",
+		"MAX_LEVEL" => "2",
+		"CHILD_MENU_TYPE" => "left",
+		"USE_EXT" => "Y",
+		"DELAY" => "N",
+		"ALLOW_MULTI_SELECT" => "Y",
+		"MENU_CACHE_TYPE" => "A",
+		"MENU_CACHE_TIME" => "3600",
+		"MENU_CACHE_USE_GROUPS" => "Y",
+		"MENU_CACHE_GET_VARS" => array(
+		),
+		"COMPONENT_TEMPLATE" => "horizontal_multilevel"
+	),
+	false
 );?>
+
+
+<? if ($APPLICATION->GetCurPage(false) !== '/main-page.php'): ?>
+    <?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "nav", Array(
+        "PATH" => "",    
+        "SITE_ID" => "s1",    
+        "START_FROM" => "0",    
+    ),
+    false
+    );?>
+<? endif; ?>
+
+
   </div>
