@@ -1,9 +1,11 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Объявления");
-?><?$APPLICATION->IncludeComponent(
+?>
+
+<?$APPLICATION->IncludeComponent(
 	"bitrix:news",
-	"",
+	"news",
 	Array(
 		"ADD_ELEMENT_CHAIN" => "N",
 		"ADD_SECTIONS_CHAIN" => "Y",
@@ -18,17 +20,20 @@ $APPLICATION->SetTitle("Объявления");
 		"CACHE_TIME" => "36000000",
 		"CACHE_TYPE" => "A",
 		"CHECK_DATES" => "Y",
-		"DETAIL_ACTIVE_DATE_FORMAT" => "d.m.Y",
+		"DETAIL_ACTIVE_DATE_FORMAT" => "j M Y",
 		"DETAIL_DISPLAY_BOTTOM_PAGER" => "Y",
 		"DETAIL_DISPLAY_TOP_PAGER" => "N",
-		"DETAIL_FIELD_CODE" => array("",""),
+		"DETAIL_FIELD_CODE" => array("TIMESTAMP_X",""),
 		"DETAIL_PAGER_SHOW_ALL" => "Y",
 		"DETAIL_PAGER_TEMPLATE" => "",
 		"DETAIL_PAGER_TITLE" => "Страница",
-		"DETAIL_PROPERTY_CODE" => array("",""),
+		"DETAIL_PROPERTY_CODE" => array("BATHS","FLOORS","GARAGE","SQUARE","PRICE",""),
 		"DETAIL_SET_CANONICAL_URL" => "N",
 		"DISPLAY_BOTTOM_PAGER" => "Y",
+		"DISPLAY_DATE" => "Y",
 		"DISPLAY_NAME" => "Y",
+		"DISPLAY_PICTURE" => "Y",
+		"DISPLAY_PREVIEW_TEXT" => "Y",
 		"DISPLAY_TOP_PAGER" => "N",
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
 		"IBLOCK_ID" => "10",
@@ -36,7 +41,8 @@ $APPLICATION->SetTitle("Объявления");
 		"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
 		"LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"LIST_FIELD_CODE" => array("",""),
-		"LIST_PROPERTY_CODE" => array("",""),
+		"LIST_PROPERTY_CODE" => array("PRICE",""),
+		"MEDIA_PROPERTY" => "37",
 		"MESSAGE_404" => "",
 		"META_DESCRIPTION" => "-",
 		"META_KEYWORDS" => "-",
@@ -56,17 +62,20 @@ $APPLICATION->SetTitle("Объявления");
 		"SET_STATUS_404" => "N",
 		"SET_TITLE" => "Y",
 		"SHOW_404" => "N",
+		"SLIDER_PROPERTY" => "34",
 		"SORT_BY1" => "ACTIVE_FROM",
 		"SORT_BY2" => "SORT",
 		"SORT_ORDER1" => "DESC",
 		"SORT_ORDER2" => "ASC",
 		"STRICT_SECTION_CHECK" => "N",
+		"TEMPLATE_THEME" => "blue",
 		"USE_CATEGORIES" => "N",
 		"USE_FILTER" => "N",
 		"USE_PERMISSIONS" => "N",
 		"USE_RATING" => "N",
 		"USE_REVIEW" => "N",
 		"USE_RSS" => "N",
-		"USE_SEARCH" => "N"
+		"USE_SEARCH" => "N",
+		"USE_SHARE" => "N"
 	)
 );?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

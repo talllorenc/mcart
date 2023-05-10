@@ -42,3 +42,58 @@ $APPLICATION->SetTitle("Новая страница");
 	),
 	false
 );?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+
+
+
+<div class="site-navbar">
+  <div class="container py-1">
+    <div class="row align-items-center">
+      <div class="col-8 col-md-8 col-lg-4">
+        <h1 class=""><a href="index.html" class="h5 text-uppercase text-black"><strong>HomeSpace<span class="text-danger">.</span></strong></a></h1>
+      </div>
+      <div class="col-4 col-md-4 col-lg-8">
+        <nav class="site-navigation text-right text-md-right" role="navigation">
+
+          <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+
+          <?if (!empty($arResult)):?>
+          <ul class="site-menu js-clone-nav d-none d-lg-block">
+            <?
+            $previousLevel = 0;
+            foreach($arResult as $arItem):
+              if ($previousLevel && $arItem["DEPTH_LEVEL"] < $previousLevel):?>
+                <?=str_repeat("</ul></li>", ($previousLevel - $arItem["DEPTH_LEVEL"]));?>
+              <?endif?>
+
+              <?if ($arItem["IS_PARENT"]):?>
+                <?if ($arItem["DEPTH_LEVEL"] == 1):?>
+                  <li class="<?if ($arItem["SELECTED"]):?>active<?endif?>">
+                    <a href="<?=$arItem["LINK"]?>"><?=$arItem["TEXT"]?></a>
+                  <?else:?>
+                  <li class="has-children <?if ($arItem["SELECTED"]):?>active<?endif?>">
+                    <a href="<?=$arItem["LINK"]?>"><?=$arItem["TEXT"]?></a>
+                    <ul class="dropdown">
+                <?endif?>
+              <?else:?>
+                <?if ($arItem["DEPTH_LEVEL"] == 1):?>
+                  <li class="<?if ($arItem["SELECTED"]):?>active<?endif?>">
+                    <a href="<?=$arItem["LINK"]?>"><?=$arItem["TEXT"]?></a>
+                  </li>
+                <?else:?>
+                  <li class="<?if ($arItem["SELECTED"]):?>active<?endif?>"><a href="<?=$arItem["LINK"]?>"><?=$arItem["TEXT"]?></a></li>
+                <?endif?>
+              <?endif?>
+
+              <?$previousLevel = $arItem["DEPTH_LEVEL"];?>
+            <?endforeach?>
+
+            <?if ($previousLevel > 1)://close last item tags?>
+              <?=str_repeat("</ul></li>", ($previousLevel-1) );?>
+            <?endif?>
+          </ul>
+          <?endif?>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
